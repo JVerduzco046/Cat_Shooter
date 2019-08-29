@@ -1,0 +1,27 @@
+div.jumbotron {
+    width: 30%;
+    margin: auto;
+    display: block;
+    border-radius: 25px; 
+    border: solid 1px  green;
+    background-color: white;
+}
+h1.jumbotron-title{
+text-align: center;
+}
+p.jumbotron-obj {
+    text-align: center;
+}
+hr.jumbotron-hr{
+    width: 50%;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+p.jumbotron-ins {
+    text-align: center;
+
+}
+p.jumbotron-button  {
+    text-align:center;
+}
