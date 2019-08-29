@@ -4,7 +4,10 @@ div.jumbotron {
     display: block;
     border-radius: 25px; 
     border: solid 1px  green;
-    background-color: white;
+    background-color: rgba(242, 255, 0, 0.756);
+    z-index: 1;
+    box-shadow: 1px 30px 25px black;
+
 }
 h1.jumbotron-title{
 text-align: center;
