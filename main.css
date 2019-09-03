@@ -1,3 +1,9 @@
+html {
+overflow: auto;
+}
+
+
+/* Styles for the start page needs further refinement  mainly color */
 div.jumbotron {
     width: 30%;
     margin: auto;
@@ -6,6 +12,7 @@ div.jumbotron {
     border: solid 1px  green;
     background-color: rgba(242, 255, 0, 0.756);
     z-index: 1;
+    order: 2;
     box-shadow: 1px 30px 25px black;
 
 }
@@ -27,4 +34,18 @@ p.jumbotron-ins {
 }
 p.jumbotron-button  {
     text-align:center;
+}
+/* Styles for enemy's so they can fit inside the page properly */
+div.enemy-area {
+width: 75%;
+margin: auto;
+height: 100%;
+z-index: 2;
+order: 1;
+display: none;
+}
+div.enemy-area img.red-enemy {
+width: 5%;
+padding: 6px;
+padding-bottom: 10px
 }
