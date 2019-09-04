@@ -10,7 +10,7 @@ div.jumbotron {
     display: block;
     border-radius: 25px; 
     border: solid 1px  green;
-    background-color: rgba(242, 255, 0, 0.756);
+    background-color: rgba(208, 247, 11, 0.666);
     z-index: 1;
     order: 2;
     box-shadow: 1px 30px 25px black;
