@@ -1,0 +1,1 @@
+// Christian make the title card go away after the user clicks start game with a fade away effect.
