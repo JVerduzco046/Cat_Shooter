@@ -19,6 +19,6 @@ function createEnemyLaser($container, x, y) {
     $element.className = "enemy-laser";
     $container.appendChild($element);
     const laser = {x, y, $element};
-    GAME_STATE.enemeyLasers.push(laser);
+    GAME_STATE.enemyLasers.push(laser);
     setPosition($element, x,y);
 }
