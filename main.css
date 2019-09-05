@@ -52,3 +52,14 @@ div.enemy-area img.red-enemy {
 width: 5%;
 margin: 0% 3%;
 }
+.game .player {
+    position: absolute;
+    margin-left: -50px;
+    width: 100px;
+  }
+  
+  .game .laser {
+    position: absolute;
+    margin-left: -2.5px;
+    height: 40px;
+  }
