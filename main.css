@@ -66,8 +66,8 @@ div.game{
 
 div.game .player{
     position: absolute;
-    margin-left: -60px;
-    width: 120px;
+    margin-left: -50px;
+    width: 100px;
 }
 
 div.game .laser {
