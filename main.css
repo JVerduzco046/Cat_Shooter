@@ -1,5 +1,6 @@
 html {
-overflow: scroll;
+overflow: -moz-hidden-unscrollable;
+overflow: hidden;
 }
 
 
