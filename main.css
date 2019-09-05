@@ -49,8 +49,8 @@ align-content: center;
 }
 
 div.enemy-area img.red-enemy {
-width: 5.5%;
-margin: 1% 3%;
+width: 5%;
+margin: 0% 3%;
 }
 .game .player {
     position: absolute;
