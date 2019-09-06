@@ -1,14 +1,15 @@
+
 const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
 
-const GAME_WIDTH = 1200;
+const GAME_WIDTH = 1400;
 const GAME_HEIGHT = 700;
 
 const PLAYER_WIDTH = 20;
-const PLAYER_MAX_SPEED = 600.0;
-const LASER_MAX_SPEED = 300.0;
-const LASER_COOLDOWN = 0.5;
+const PLAYER_MAX_SPEED = 700.0;
+const LASER_MAX_SPEED = 400.0;
+const LASER_COOLDOWN = 0.3;
 
 const ENEMIES_PER_ROW = 10;
 const ENEMY_HORIZONTAL_PADDING = 80;
@@ -27,6 +28,7 @@ const GAME_STATE = {
     lasers: [],
     enemies: [],
     enemyLasers: [],
+    gameOver: false
 };
 
 function rectsIntersect(r1, r2) {
@@ -38,8 +40,8 @@ function rectsIntersect(r1, r2) {
     );
 }
 
-function setPosition($el, x, y) {
-    $el.style.transform = `translate(${x}px, ${y}px)`;
+function setPosition(el, x, y) {
+    el.style.transform = `translate(${x}px, ${y}px)`;
 }
 
 function clamp(v, min, max) {
@@ -71,6 +73,8 @@ function createPlayer($container) {
 function destroyPlayer($container, player) {
     $container.removeChild(player);
     GAME_STATE.gameOver = true;
+    const audio = new Audio("sound/sfx-lose.ogg");
+    audio.play();
 }
 
 function updatePlayer(dt, $container) {
@@ -95,8 +99,8 @@ function updatePlayer(dt, $container) {
         GAME_STATE.playerCooldown -= dt;
     }
 
-    const $player = document.querySelector(".player");
-    setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
+    const player = document.querySelector(".player");
+    setPosition(player, GAME_STATE.playerX, GAME_STATE.playerY);
 }
 
 function createLaser($container, x, y) {
@@ -227,9 +231,23 @@ function init() {
     }
 }
 
+function playerHasWon() {
+    return GAME_STATE.enemies.length === 0;
+}
+
 function update(e) {
     const currentTime = Date.now();
     const dt = (currentTime - GAME_STATE.lastTime) / 1000.0;
+
+    if (GAME_STATE.gameOver) {
+        document.querySelector(".game-over").style.display = "block";
+        return;
+    }
+
+    if (playerHasWon()) {
+        document.querySelector(".congratulations").style.display = "block";
+        return;
+    }
 
     const $container = document.querySelector(".game");
     updatePlayer(dt, $container);
