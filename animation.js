@@ -68,6 +68,11 @@ function createPlayer($container) {
     setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
 }
 
+function destroyPlayer($container, player) {
+    $container.removeChild(player);
+    GAME_STATE.gameOver = true;
+}
+
 function updatePlayer(dt, $container) {
     if (GAME_STATE.leftPressed) {
         GAME_STATE.playerX -= dt * PLAYER_MAX_SPEED;
@@ -195,6 +200,14 @@ function updateEnemyLasers(dt, $container) {
             destroyLaser($container, laser);
         }
         setPosition(laser.$element, laser.x, laser.y);
+        const r1 = laser.$element.getBoundingClientRect();
+        const player = document.querySelector(".player");
+        const r2 = player.getBoundingClientRect();
+        if (rectsIntersect(r1, r2)) {
+            // Player was hit
+            destroyPlayer($container, player);
+            break;
+        }
     }
     GAME_STATE.enemyLasers = GAME_STATE.enemyLasers.filter(e => !e.isDead);
 }
