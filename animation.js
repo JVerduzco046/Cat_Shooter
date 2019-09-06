@@ -1,6 +1,6 @@
 // --Tutorial Used: Creating Space Invaders in JavaScript by Frederick De Blesser--
 
-//The following const lines create vgloabal variables which will be used throughout the program in other functions. 
+//The following const lines create gloabal variables which will be used throughout the program in other functions. 
 //Key Codes 
 const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
@@ -21,9 +21,9 @@ const ENEMIES_PER_ROW = 8;
 const ENEMY_HORIZONTAL_PADDING = 80;
 const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
-const ENEMY_COOLDOWN = 8.0;
+const ENEMY_COOLDOWN = 5.0;
 
-// Begins the game with no keys being pressed, player beign still, and gameOver not initialized
+// Begins the game with no keys being pressed, player begin still, and gameOver not initialized
 const GAME_STATE = {
     lastTime: Date.now(),
     leftPressed: false,
@@ -49,7 +49,7 @@ rectsIntersect =(r1, r2) => {
     );
 }
 
-// Sets postion of the element
+// Sets position of the element
 function setPosition(el, x, y) {
     // Template Literal 
     el.style.transform = `translate(${x}px, ${y}px)`;
@@ -72,7 +72,7 @@ function rand(min, max) {
     return min + Math.random() * (max - min);
 }
 
-// Creates player on the screen, setting its position
+// Creates player on the screen, setting its position\
 function createPlayer($container) {
     GAME_STATE.playerX = GAME_WIDTH / 2;
     GAME_STATE.playerY = GAME_HEIGHT - 50;
@@ -161,6 +161,8 @@ function destroyLaser($container, laser) {
 }
 
 // Creates the enemies on screen, writing them into the HTML without having to repeat the image over and over again in the HTML
+// document.getElementById("start-button").addEventListener("mousedown", createEnemy);
+
 function createEnemy($container, x, y) {
     const $element = document.createElement("img");
     $element.src = "enemy_ship.png";
@@ -248,6 +250,7 @@ function init() {
             createEnemy($container, x, y);
         }
     }
+
 }
 
 // 
@@ -304,6 +307,12 @@ function onKeyUp(e) {
 
 // 
 init();
+// const audio = new ('Assets/BeepBox-Song 3.0.wav')
+// document.addEventListener("load", audio);
+
+
+
+
 window.addEventListener("keydown", onKeyDown);
 window.addEventListener("keyup", onKeyUp);
 window.requestAnimationFrame(update);
