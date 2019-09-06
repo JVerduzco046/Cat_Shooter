@@ -7,9 +7,9 @@ const GAME_WIDTH = 1400;
 const GAME_HEIGHT = 625;
 
 const PLAYER_WIDTH = 20;
-const PLAYER_MAX_SPEED = 5000.0;
-const LASER_MAX_SPEED = 2500.0;
-const LASER_COOLDOWN = 0.0;
+let PLAYER_MAX_SPEED = 500.0;
+let LASER_MAX_SPEED = 200.0;
+let LASER_COOLDOWN = 0.5;
 
 const GAME_STATE = {
     lastTime: Date.now(),
