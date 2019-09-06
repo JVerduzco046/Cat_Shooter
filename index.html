@@ -19,16 +19,20 @@
             <div id='stars2'></div>
             <div id='stars3'></div>
             <div id='title'></div>
+            <div class="jumbotron" id="introCard">
+                <h1 class="jumbotron-title">Cat Shooter</h1>
+                <p class="jumbotron-obj">Reach the Boss</p>
+                <hr class="jumbotron-hr">
+                <p class="jumbotron-ins">Move with the side arrows, shoot with the space bar.</p>
+                <p class="jumbotron-button" id="start_button">
+                    <a href="#">Start Game</a>
+                </p>
+            </div>
         </div>
-        <div class="game-over" id="game-over">
+        <div class="game-over">
             <h1>GAME OVER</h1>
             <h2>You lost the game</h2>
             <button class="btn" onclick="window.location.reload()">Restart</button>
-        </div>
-        <div class="won" id="won" style="display: none">
-            <h1>Congrats</h1>
-            <h2>You beat the game</h2>
-            <button class="btn" onclick="window.location.reload()">Again?</button>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
