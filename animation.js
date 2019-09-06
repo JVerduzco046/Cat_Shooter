@@ -14,14 +14,14 @@ const GAME_HEIGHT = 700;
 const PLAYER_WIDTH = 20;
 const PLAYER_MAX_SPEED = 700.0;
 const LASER_MAX_SPEED = 400.0;
-const LASER_COOLDOWN = 0.3;
+const LASER_COOLDOWN = 0.32;
 
 // Enemy Values: enemy amount, enemy spacing, enemy projectile cooldown
 const ENEMIES_PER_ROW = 8;
 const ENEMY_HORIZONTAL_PADDING = 80;
 const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
-const ENEMY_COOLDOWN = 5.0;
+const ENEMY_COOLDOWN = 7.0;
 
 // Begins the game with no keys being pressed, player begin still, and gameOver not initialized
 const GAME_STATE = {
