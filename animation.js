@@ -1,22 +1,29 @@
+// --Tutorial Used: Creating Space Invaders in JavaScript by Frederick De Blesser--
 
+//The following const lines create vgloabal variables which will be used throughout the program in other functions. 
+//Key Codes 
 const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
 
+//Game Area
 const GAME_WIDTH = 1400;
 const GAME_HEIGHT = 700;
 
+// Player Values : size, speed, projectile speed, projectile cooldown
 const PLAYER_WIDTH = 20;
 const PLAYER_MAX_SPEED = 700.0;
 const LASER_MAX_SPEED = 400.0;
 const LASER_COOLDOWN = 0.3;
 
-const ENEMIES_PER_ROW = 10;
+// Enemy Values: enemy amount, enemy spacing, enemy projectile cooldown
+const ENEMIES_PER_ROW = 8;
 const ENEMY_HORIZONTAL_PADDING = 80;
 const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
 const ENEMY_COOLDOWN = 8.0;
 
+// Begins the game with no keys being pressed, player beign still, and gameOver not initialized
 const GAME_STATE = {
     lastTime: Date.now(),
     leftPressed: false,
@@ -31,7 +38,9 @@ const GAME_STATE = {
     gameOver: false
 };
 
-function rectsIntersect(r1, r2) {
+// Arrow Function
+// 
+rectsIntersect =(r1, r2) => {
     return !(
         r2.left > r1.right ||
         r2.right < r1.left ||
@@ -40,11 +49,14 @@ function rectsIntersect(r1, r2) {
     );
 }
 
+// Sets postion of the element
 function setPosition(el, x, y) {
+    // Template Literal 
     el.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-function clamp(v, min, max) {
+// Arrow Function
+clamp=(v, min, max)=> {
     if (v < min) {
         return min;
     } else if (v > max) {
@@ -60,6 +72,7 @@ function rand(min, max) {
     return min + Math.random() * (max - min);
 }
 
+// Creates player on the screen, setting its position
 function createPlayer($container) {
     GAME_STATE.playerX = GAME_WIDTH / 2;
     GAME_STATE.playerY = GAME_HEIGHT - 50;
@@ -70,13 +83,13 @@ function createPlayer($container) {
     setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
 }
 
+// Allows for the player to be removed from screen when the player has lost
 function destroyPlayer($container, player) {
     $container.removeChild(player);
     GAME_STATE.gameOver = true;
-    const audio = new Audio("sound/sfx-lose.ogg");
-    audio.play();
 }
 
+// Updates the player sprite in order to allow the player to move on the screen when pressing certain specified keys
 function updatePlayer(dt, $container) {
     if (GAME_STATE.leftPressed) {
         GAME_STATE.playerX -= dt * PLAYER_MAX_SPEED;
@@ -103,6 +116,7 @@ function updatePlayer(dt, $container) {
     setPosition(player, GAME_STATE.playerX, GAME_STATE.playerY);
 }
 
+// Creates the cat that is being used as the projectile by the player
 function createLaser($container, x, y) {
     const $element = document.createElement("img");
     $element.src = "pixel_cat.png";
@@ -110,11 +124,10 @@ function createLaser($container, x, y) {
     $container.appendChild($element);
     const laser = { x, y, $element };
     GAME_STATE.lasers.push(laser);
-    const audio = new Audio("sound/sfx-laser1.ogg");
-    audio.play();
     setPosition($element, x, y);
 }
 
+// Updates the projectile sprite in order to respond to the player 
 function updateLasers(dt, $container) {
     const lasers = GAME_STATE.lasers;
     for (let i = 0; i < lasers.length; i++) {
@@ -141,11 +154,13 @@ function updateLasers(dt, $container) {
     GAME_STATE.lasers = GAME_STATE.lasers.filter(e => !e.isDead);
 }
 
+// Detect when the player is hit in order to prompt the Game Over screen
 function destroyLaser($container, laser) {
     $container.removeChild(laser.$element);
     laser.isDead = true;
 }
 
+// Creates the enemies on screen, writing them into the HTML without having to repeat the image over and over again in the HTML
 function createEnemy($container, x, y) {
     const $element = document.createElement("img");
     $element.src = "enemy_ship.png";
@@ -161,9 +176,10 @@ function createEnemy($container, x, y) {
     setPosition($element, x, y);
 }
 
+// Allows the characters to move on screen, both in side to side while also in a circular motion
 function updateEnemies(dt, $container) {
-    const dx = Math.sin(GAME_STATE.lastTime / 1000.0) * 50;
-    const dy = Math.cos(GAME_STATE.lastTime / 1000.0) * 10;
+    const dx = Math.sin(GAME_STATE.lastTime / 1000.0) * 40;
+    const dy = Math.cos(GAME_STATE.lastTime / 1000.0) * 20;
 
     const enemies = GAME_STATE.enemies;
     for (let i = 0; i < enemies.length; i++) {
@@ -180,11 +196,13 @@ function updateEnemies(dt, $container) {
     GAME_STATE.enemies = GAME_STATE.enemies.filter(e => !e.isDead);
 }
 
+// Destroys an enemy upon being hit by one of the players projectiles
 function destroyEnemy($container, enemy) {
     $container.removeChild(enemy.$element);
     enemy.isDead = true;
 }
 
+// Creates the blast that will be shot by the enemy towards the player sprite
 function createEnemyLaser($container, x, y) {
     const $element = document.createElement("img");
     $element.src = "enemy-fire.png";
@@ -195,6 +213,7 @@ function createEnemyLaser($container, x, y) {
     setPosition($element, x, y);
 }
 
+// Allows for the enemy blasts to move on screen, going downwards towards the player 
 function updateEnemyLasers(dt, $container) {
     const lasers = GAME_STATE.enemyLasers;
     for (let i = 0; i < lasers.length; i++) {
@@ -216,7 +235,7 @@ function updateEnemyLasers(dt, $container) {
     GAME_STATE.enemyLasers = GAME_STATE.enemyLasers.filter(e => !e.isDead);
 }
 
-
+// 
 function init() {
     const $container = document.querySelector(".game");
     createPlayer($container);
@@ -231,10 +250,12 @@ function init() {
     }
 }
 
+// 
 function playerHasWon() {
     return GAME_STATE.enemies.length === 0;
 }
 
+// 
 function update(e) {
     const currentTime = Date.now();
     const dt = (currentTime - GAME_STATE.lastTime) / 1000.0;
@@ -259,6 +280,7 @@ function update(e) {
     window.requestAnimationFrame(update);
 }
 
+// 
 function onKeyDown(e) {
     if (e.keyCode === KEY_CODE_LEFT) {
         GAME_STATE.leftPressed = true;
@@ -269,6 +291,7 @@ function onKeyDown(e) {
     }
 }
 
+// 
 function onKeyUp(e) {
     if (e.keyCode === KEY_CODE_LEFT) {
         GAME_STATE.leftPressed = false;
@@ -279,6 +302,7 @@ function onKeyUp(e) {
     }
 }
 
+// 
 init();
 window.addEventListener("keydown", onKeyDown);
 window.addEventListener("keyup", onKeyUp);

@@ -42,6 +42,14 @@ html {
         text-decoration: none;
         color: #825f42;
     }
+
+    .btn{
+      font-size: 16px;
+      padding: 10px;
+      border: none;
+      border-radius: 10px
+    }
+
     /* Styles for enemy's so they can fit inside the page properly */
     div.enemy-area {
     width: 75%;
@@ -70,6 +78,7 @@ html {
         margin-left: -20px;
         margin-top: -18px;
         width: 50px;
+        z-index: 1;
       }
       
       .game .player {
@@ -100,4 +109,7 @@ html {
         border-radius: 10px;
         text-align: center;
         animation: pop-in 1s;
+        z-index: 2;
+        margin-left: 40%;
       }
+
