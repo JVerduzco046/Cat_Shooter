@@ -65,13 +65,26 @@ div.game{
 
 /* 1450 750 */
 
-div.game .player{
+.game .enemy {
     position: absolute;
-    margin-left: -50px;
-    width: 100px;
-}
-
-div.game .laser {
+    margin-left: -20px;
+    margin-top: -18px;
+    width: 40px;
+  }
+  
+  .game .player {
+    position: absolute;
+    margin-left: -20px;
+    width: 40px;
+  }
+  
+  .game .laser {
+    position: absolute;
+    margin-left: -2.5px;
+    height: 30px;
+  }
+  
+  .game .enemy-laser {
     position: absolute;
     margin-left: -2.5px;
     height: 30px;
