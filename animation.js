@@ -14,7 +14,7 @@ const GAME_HEIGHT = 700;
 const PLAYER_WIDTH = 20;
 const PLAYER_MAX_SPEED = 700.0;
 const LASER_MAX_SPEED = 400.0;
-const LASER_COOLDOWN = 0.3;
+const LASER_COOLDOWN = 0.32;
 
 // Enemy Values: enemy amount, enemy spacing, enemy projectile cooldown
 const ENEMIES_PER_ROW = 8;
