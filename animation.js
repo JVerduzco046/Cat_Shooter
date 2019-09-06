@@ -2,7 +2,7 @@ const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
 
-const GAME_WIDTH = 1400;
+const GAME_WIDTH = 1200;
 const GAME_HEIGHT = 700;
 
 const PLAYER_WIDTH = 20;
@@ -14,7 +14,7 @@ const ENEMIES_PER_ROW = 10;
 const ENEMY_HORIZONTAL_PADDING = 80;
 const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
-const ENEMY_COOLDOWN = 2.0;
+const ENEMY_COOLDOWN = 8.0;
 
 const GAME_STATE = {
   lastTime: Date.now(),

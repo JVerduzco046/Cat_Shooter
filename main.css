@@ -74,14 +74,14 @@ div.game{
   
   .game .player {
     position: absolute;
-    margin-left: -20px;
-    width: 40px;
+    margin-left: -40px;
+    width: 80px;
   }
   
   .game .laser {
     position: absolute;
     margin-left: -2.5px;
-    height: 30px;
+    height: 40px;
   }
   
   .game .enemy-laser {
