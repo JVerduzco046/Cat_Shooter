@@ -7,9 +7,9 @@ const GAME_WIDTH = 1400;
 const GAME_HEIGHT = 625;
 
 const PLAYER_WIDTH = 20;
-const PLAYER_MAX_SPEED = 600.0;
-const LASER_MAX_SPEED = 300.0;
-const LASER_COOLDOWN = 0.4;
+const PLAYER_MAX_SPEED = 5000.0;
+const LASER_MAX_SPEED = 2500.0;
+const LASER_COOLDOWN = 0.0;
 
 const GAME_STATE = {
     lastTime: Date.now(),
@@ -84,12 +84,21 @@ function createLaser($container, x, y) {
 
 function updateLasers(dt, $container) {
     const lasers = GAME_STATE.lasers;
-
-    for (const laser of lasers) {
-        laser.y -= dt * LASER_MAX_SPEED;
-        setPosition(laser.$element, laser.x, laser.y);
+    for (let i = 0; i < lasers.length; i++) {
+      const laser = lasers[i];
+      laser.y -= dt * LASER_MAX_SPEED;
+      if (laser.y < 0) {
+        destroyLaser($container, laser);
+      }
+      setPosition(laser.$element, laser.x, laser.y);
     }
-}
+    GAME_STATE.lasers = GAME_STATE.lasers.filter(e => !e.isDead);
+  }
+
+function destroyLaser($container, laser) {
+    $container.removeChild(laser.$element);
+    laser.isDead = true;
+  }
 
 function init() {
     const $container = document.querySelector(".game");
