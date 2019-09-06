@@ -1,4 +1,4 @@
-//bryan make the enemies shoot.
+//bryan make the enemies shoot
 const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
@@ -84,8 +84,8 @@ function createLaser($container, x, y) {
 
 function updateLasers(dt, $container) {
     const lasers = GAME_STATE.lasers;
-    for (let i = 0; i < lasers.length; i++) {
-        const laser = lasers[i];
+
+    for (const laser of lasers) {
         laser.y -= dt * LASER_MAX_SPEED;
         setPosition(laser.$element, laser.x, laser.y);
     }
