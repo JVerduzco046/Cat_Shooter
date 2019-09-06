@@ -1,82 +1,91 @@
 html {
-overflow: -moz-hidden-unscrollable;
-overflow: hidden;
-}
-
-
-/* Styles for the start page needs further refinement  mainly color */
-div.jumbotron {
-    width: 30%;
+    overflow: -moz-hidden-unscrollable;
+    overflow: hidden;
+    }
+    
+    
+    /* Styles for the start page needs further refinement  mainly color */
+    div.jumbotron {
+        width: 30%;
+        margin: auto;
+        display: block;
+        border-radius: 25px; 
+        border: solid 1px  green;
+        background-color: #c7ae79;
+        z-index: 1;
+        order: 2;
+        box-shadow: 1px 30px 25px black;
+    
+    }
+    h1.jumbotron-title{
+    text-align: center;
+    }
+    p.jumbotron-obj {
+        text-align: center;
+    }
+    hr.jumbotron-hr{
+        width: 50%;
+        margin-left: auto;
+        margin-right:auto;
+    }
+    
+    p.jumbotron-ins {
+        text-align: center;
+    
+    }
+    
+    p.jumbotron-button  {
+        text-align:center;
+    }
+    
+    p.jumbotron-button a {
+        text-decoration: none;
+        color: #825f42;
+    }
+    /* Styles for enemy's so they can fit inside the page properly */
+    div.enemy-area {
+    width: 75%;
     margin: auto;
-    display: block;
-    border-radius: 25px; 
-    border: solid 1px  green;
-    background-color: #c7ae79;
-    z-index: 1;
-    order: 2;
-    box-shadow: 1px 30px 25px black;
-
-}
-h1.jumbotron-title{
-text-align: center;
-}
-p.jumbotron-obj {
-    text-align: center;
-}
-hr.jumbotron-hr{
-    width: 50%;
-    margin-left: auto;
-    margin-right:auto;
-}
-
-p.jumbotron-ins {
-    text-align: center;
-
-}
-
-p.jumbotron-button  {
-    text-align:center;
-}
-
-p.jumbotron-button a {
-    text-decoration: none;
-    color: #825f42;
-}
-/* Styles for enemy's so they can fit inside the page properly */
-div.enemy-area {
-width: 100%;
-align-content: center;
-}
-
-div.enemy-area img.red-enemy {
-width: 5%;
-margin: 0% 3%;
-}
-
-/* Player prototype */
-div.game{
-    width: 100% ; 
     height: 100%;
-    position: relative;
-}
-
-/* 1450 750 */
-
-.game .enemy {
-    position: absolute;
-    margin-left: -20px;
-    margin-top: -18px;
-    width: 40px;
-  }
-  
-  .game .player {
-    position: absolute;
-    margin-left: -40px;
-    width: 80px;
-  }
-  
-  .game .laser {
-    position: absolute;
-    margin-left: -2.5px;
-    height: 30px;
-  }
+    z-index: 2;
+    order: 1;
+    }
+    div.enemy-area img.red-enemy {
+    width: 5%;
+    padding: 6px;
+    padding-bottom: 10px
+    }
+    
+    /* Player prototype */
+    div.game{
+        width: 100% ; 
+        height: 100%;
+        position: relative;
+    }
+    
+    /* 1450 750 */
+    
+    .game .enemy {
+        position: absolute;
+        margin-left: -20px;
+        margin-top: -18px;
+        width: 50px;
+      }
+      
+      .game .player {
+        position: absolute;
+        margin-left: -50px;
+        width: 100px;
+      }
+      
+      .game .laser {
+        position: absolute;
+        margin-left: -2.5px;
+        height: 40px;
+      }
+      
+      .game .enemy-laser {
+        position: absolute;
+        margin-left: -2.5px;
+        height: 30px;
+      }
