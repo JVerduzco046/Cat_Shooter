@@ -16,7 +16,7 @@ document.getElementById("start_button").addEventListener("mousedown", function()
       const GAME_HEIGHT = 700;
       
       // Player Values : size, speed, projectile speed, projectile cooldown
-      const PLAYER_WIDTH = 20;
+      const PLAYER_WIDTH = 15;
       const PLAYER_MAX_SPEED = 700.0;
       const LASER_MAX_SPEED = 400.0;
       const LASER_COOLDOWN = 0.3;
@@ -271,7 +271,7 @@ document.getElementById("start_button").addEventListener("mousedown", function()
           }
       
           if (playerHasWon()) {
-              document.querySelector(".congratulations").style.display = "block";
+              document.querySelector(".victory").style.display = "block";
               return;
           }
       
