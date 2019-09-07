@@ -16,7 +16,7 @@ document.getElementById("start_button").addEventListener("mousedown", function()
       const GAME_HEIGHT = 700;
       
       // Player Values : size, speed, projectile speed, projectile cooldown
-      const PLAYER_WIDTH = 15;
+      const PLAYER_WIDTH = 10;
       const PLAYER_MAX_SPEED = 700.0;
       const LASER_MAX_SPEED = 400.0;
       const LASER_COOLDOWN = 0.3;
@@ -26,7 +26,7 @@ document.getElementById("start_button").addEventListener("mousedown", function()
       const ENEMY_HORIZONTAL_PADDING = 80;
       const ENEMY_VERTICAL_PADDING = 70;
       const ENEMY_VERTICAL_SPACING = 80;
-      const ENEMY_COOLDOWN = 7.0;
+      const ENEMY_COOLDOWN = 3.0;
       
       // Begins the game with no keys being pressed, player being still, and gameOver not initialized
       const GAME_STATE = {
